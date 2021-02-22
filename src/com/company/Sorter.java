@@ -17,21 +17,21 @@ public class Sorter {
         ArrayList<String> musicList = new ArrayList<>();
 
         // Create a process that will execute a command
-        Process p;
+        Process process;
 
         // Create a string to hold the current looped file
-        String s;
+        String line;
 
         try{
             // execute the command
-            p = Runtime.getRuntime().exec("find");
+            process = Runtime.getRuntime().exec("find");
 
             // create a bufferedReader to stream the output of the command above
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
             // while tn bufferedReader reads a new line, add the read line to the arraylist
-            while((s=bufferedReader.readLine())!=null){
-                musicList.add(s);
+            while((line=bufferedReader.readLine())!=null){
+                musicList.add(line);
             }
         }catch(Exception e){
             System.out.println(e);
